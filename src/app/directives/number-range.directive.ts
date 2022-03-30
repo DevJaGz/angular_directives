@@ -19,6 +19,7 @@ import { numberRangeValidator } from '../validators/number-range.validator';
 })
 export class NumberRangeDirective implements Validator, OnInit {
   private _ranges: number[] = [];
+
   @Input() set numberRange(ranges: number[]) {
     this._ranges = ranges;
   }

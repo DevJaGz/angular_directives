@@ -1,8 +1,8 @@
 <!-- <div appDom [entrada]="title">TEST DIRECTIVE</div> -->
-<div *myFor="let item of longList; index  as i; itemsAtOnce: 500; intervalLength: 50">TEST DIRECTIVE
+<!-- <div *myFor="let item of longList; index  as i; itemsAtOnce: 500; intervalLength: 50">TEST DIRECTIVE
     {{item | json}}
     {{i}}
-</div>
+</div> -->
 
 <!-- <div appStyle style="height: 100px;">Hola Style</div> -->
 
@@ -10,3 +10,17 @@
 <ng-template #elseRef>
     Custom ELSE IF Directive
 </ng-template> -->
+
+
+<form #form="ngForm">
+
+    <input type="number" #numberRef="ngModel" [numberRange]="[18,20]" [ngModel]="0" name="numero" required>
+
+</form>
+
+<h5>Form Valid?</h5>
+<pre>{{form.valid}}</pre>
+<h5>Form Errors</h5>
+<pre>{{form.errors}}</pre>
+<h5>Form Value</h5>
+<pre>{{form.value | json}}</pre>

@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import {
   AbstractControl,
   NG_VALIDATORS,
@@ -17,18 +17,20 @@ import { numberRangeValidator } from '../validators/number-range.validator';
     },
   ],
 })
-export class NumberRangeDirective implements Validator, OnInit {
-  private _ranges: number[] = [];
+export class NumberRangeDirective implements Validator {
+  // private _ranges: number[] = [];
 
-  @Input() set numberRange(ranges: number[]) {
-    this._ranges = ranges;
-  }
+  // @Input() set numberRange(ranges: number[]) {
+  //   this._ranges = ranges;
+  // }
 
-  ngOnInit(): void {
-    console.log('NumberRangeDirective');
-  }
+  // validate(control: AbstractControl): ValidationErrors | null {
+  //   return numberRangeValidator(this._ranges)(control);
+  // }
+
+  @Input() numberRange: number[] = [];
 
   validate(control: AbstractControl): ValidationErrors | null {
-    return numberRangeValidator(this._ranges)(control);
+    return numberRangeValidator(this.numberRange)(control);
   }
 }

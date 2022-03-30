@@ -13,14 +13,22 @@
 
 
 <form #form="ngForm">
-
-    <input type="number" #numberRef="ngModel" [numberRange]="[18,20]" [ngModel]="0" name="numero" required>
-
+    <div>
+        <label for="inputDirectiveId">Input with directive range</label>
+        <input id="inputDirectiveId" type="number" #numberRef="ngModel"
+            [numberRange]="[minRangeRef.value, maxRangeRef.value]" [ngModel]="0" name="numero" required>
+    </div>
+    <div>
+        <label for="minRangeId">directive Min range</label>
+        <input id="minRangeId" type="number" #minRangeRef="ngModel" [ngModel]="0" name="minRange" required>
+        <label for="maxRangeId">directive Max range</label>
+        <input id="maxRangeId" type="number" #maxRangeRef="ngModel" [ngModel]="10" name="maxRange" required>
+    </div>
 </form>
 
 <h5>Form Valid?</h5>
 <pre>{{form.valid}}</pre>
 <h5>Form Errors</h5>
-<pre>{{form.errors}}</pre>
+<pre>{{numberRef.errors | json}}</pre>
 <h5>Form Value</h5>
 <pre>{{form.value | json}}</pre>
